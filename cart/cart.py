@@ -29,6 +29,7 @@ class Cart(object):
             self.cart[product_id]['quantity'] = quantity
         else:
             self.cart[product_id]['quantity'] += quantity
+        
         self.save()
         
     def save(self):
@@ -38,6 +39,8 @@ class Cart(object):
         """
         Remove product from cart
         """
+        print("===========================current cart info =================================")
+        print(self.cart)
         product_id = str(product.id)
         if product_id in self.cart:
             del self.cart[product_id]
@@ -49,7 +52,7 @@ class Cart(object):
         from the database.
         """  
         product_ids = self.cart.keys()
-        products = Product.object.filter(id__in=product_ids)
+        products = Product.objects.filter(id__in=product_ids)
         
         cart = self.cart.copy()
         for product in products:
