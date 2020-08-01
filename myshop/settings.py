@@ -129,3 +129,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
+
+######--- Email settings ---######
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sharp.blider2050@gmail.com'
+EMAIL_HOST_PASSWORD = 'hhnxilldsxoclxvl'
+EMAIL_USE_TLS = True
+
+CELERY_BROKER_URL = 'amqp://localhost'
