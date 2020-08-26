@@ -2,6 +2,8 @@ from decimal import Decimal
 from django.conf import settings
 from shop.models import Product
 from coupons.models import Coupon
+from shop.recommender import Recommender
+r = Recommender()
 
 
 class Cart(object):
@@ -21,6 +23,7 @@ class Cart(object):
         """
         Add a product to the cart or update its quantity
         """
+        r.products_bought([product])
         product_id = str(product.id)
         if product_id not in self.cart:
             self.cart[product_id] = {
